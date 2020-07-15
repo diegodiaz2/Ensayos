@@ -1,0 +1,309 @@
+% 		INSTRUCTIVO PARA CONSTRUIR EL ENSAYO EN LATEX
+%					v.1.3
+%				elaborado por @rmuriel
+%		---------------------------------------------------
+		
+% Este instructivo se crea para facilitar la comprensión sobre la estructura de un trabajo escrito en LaTeX, y de paso para que se comprenda una forma (entre las miles que existen) en que se podría construir un «ensayo de ficción».
+
+% Antes de empezar, para algunos será útil que lo diga, se observará que el documento está dividido en títulos en mayúscula y comentarios en color azul (como este). Corresponden a las partes habituales de un documento LaTeX y mis explicaciones. La parte que van a modificar se llama «CUERPO DEL DOCUMENTO». No tienen que saber código LaTeX para hacer este trabajo, sólo se dejan guiar por esta plantilla y listo. Más allá de leer juiciosamente este instructivo, no necesitan más!! :)
+
+% Lo que esté en latín y en color negro es lo que ustedes van a modificar. Verán que es muy fácil... abran la mente y déjense guiar! :)
+
+% Comencemos!! 
+
+%================================================================»
+% 0 - RAZONES POR LAS QUE HACEMOS ESTE TRABAJO EN LATEX
+%================================================================»
+
+% 1. LaTeX es el lenguaje del mundo académico. Las mejores universidades del mundo funcionan así, en todas existe al menos una cátedra permanente de LaTeX. En Colombia, lastimosamente, sólo lo usa la Universidad Nacional, la Universidad de Antioquia y la Universidad de los Andes. Cada una de estas universidades tiene formatos (plantillas LaTeX) para trabajos de semestre, tesis, informes de laboratorio, ensayos y exámenes parciales. 
+
+% 2. En dos aspectos importantes es el procesador de texto más efectivo que existe: rendimiento de la máquina (no hace que se cuelgue) y acabado editorial del documento (La forma final del documento es profesional y responde a los cánones editoriales internacionales).
+
+% 3. Es software libre y multiplataforma. Se puede trabajar desde casi cualquier sistema operativo respetable. No necesita ser pirateado y está disponible para su descarga las 24 horas del día. Sin contar con que existe https://www.writelatex.com, que hace el trabajo mucho más cómodo de manera online. 
+
+% 4. Automatiza procedimientos mecánicos típicos en la construcción de documentos:  autonumeración de fórmulas, generación de listas, creación de índices de contenido, de tablas, figuras y terminológicos, etc. 
+
+% 5. La preocupación por la forma se la deja uno al computador. Uno no tiene que pensar en las márgenes, en las negritas de los títulos, en el tipo de letra, etc... De esas formalidades se encarga LaTeX... Uno sólo se concentra en producir contenido, que es para eso que se inventaron los procesadores de texto en una computadora. Preocuparse por la forma es como si no se hubiera superado la época de la máquina de escribir. 
+
+% 6. Permite el uso de bases de datos bibliográficas con BibTeX. Se ahorra tiempo a la hora de citar textos y hacer listados de publicaciones. Basta con hacer una vez la base bibliográfica y uno sólo debe «llamar» las referencias usadas para cualquier cantidad de textos que uno escriba. En esto LaTeX está conectado con Mendeley, la base de datos bibliográfica más importante de la actualidad en el mundo académico. 
+
+% y como si esto fuera poco...
+
+% 7. Con LaTeX se permiten hacer comentarios en cualquier sección del texto sin que aparezcan en el documento final. Basta con introducir un signo de porcentaje (%) antes de empezar a escribirlos. 
+
+% De modo que... empecemos desde ya a usar LaTeX!!!!
+
+%================================================================»
+% I - PREÁMBULO
+%================================================================»
+
+% Antes de escribir el texto como tal, para LaTeX es importante clarificar algunos aspectos básicos sobre la naturaleza del documento que se va a escribir. Esta primera parte se llama «PREÁMBULO» y es el lugar donde se clarifican los siguientes aspectos:
+
+% - Tamaño de hoja y de fuente
+% - Tipo de documento: libro, artículo, informe, etc.
+% - Paquetes de información: español, márgenes, copiado pdf, colores, gráficos, etc. 
+% - Autor, título y fecha
+% - Algunos ajustes a la estética del documento general
+
+%----------------------------------------------------------------»
+% a - Definición de la Clase del Documento 
+%----------------------------------------------------------------»
+
+\documentclass[11pt,letterpaper]{article}
+
+%----------------------------------------------------------------»
+% b - Paquetes para trabajar en español 
+%----------------------------------------------------------------»
+\usepackage[letterpaper,margin=1in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{babelbib}
+\usepackage{url}
+\usepackage{listings}
+
+%----------------------------------------------------------------»
+% c - Paquetes para solucionar el copiado del pdf
+%----------------------------------------------------------------»
+
+\usepackage{times}		
+\usepackage[T1]{fontenc}	
+
+%----------------------------------------------------------------»
+% d - Paquetes especiales (Según las necesidades del documento)
+%----------------------------------------------------------------»
+
+\usepackage[colorinlistoftodos]{todonotes} %Para insertar notas al lado
+\usepackage{graphicx} %Para usar imágenes
+\usepackage{tikz} %Para construir gráficos con código
+\usepackage{epigraph} %Hacer epígrafes
+\usepackage{multicol} %Construir múltiples columnas en el documento
+\usepackage{color} %Para darle color a la fuentes
+\usepackage{soul} %Para tachar palabras
+\usepackage{ulem} %Para subrayados y tachados especiales (\uuline, \uwave, \xout) Aunque casi nunca se usan, a veces pueden introducirse para remarcar algo. 
+
+%----------------------------------------------------------------»
+% e - Paquete para generar links (Si el doc. tiene hipervínculos)
+%----------------------------------------------------------------»
+
+\usepackage[backref]{hyperref}	% Soporte para generación de Links - Ojalá siempre el último paquete nombrado
+\hypersetup{pdfborder={0 0 0}}	% Quitarle los bordes a los links
+
+%----------------------------------------------------------------»
+% f - Arreglos sobre la estética de los párrafos (Opcional)
+%----------------------------------------------------------------»
+
+\setlength\parindent{0pt}	% Si se quiere suprimir la sangría de los párrafos
+\setlength{\parskip}{2mm}	% Si se quiere espaciar todos los párrafos
+
+%----------------------------------------------------------------»
+% g - Autor, título y fecha del Documento
+%----------------------------------------------------------------»
+
+\author{DIEGO FERNANDO DÍAZ TORRES\thanks{INGENIERIA ELECTRONICA, UNIVERSIDAD DE ANTIOQUIA, 2020}}
+\title{HILOS EN LOS MICROPROCESADORES.}
+\date{\today} 
+
+%================================================================»
+% II - CUERPO DEL DOCUMENTO
+%================================================================»
+
+% Después de todo el preámbulo nos adentramos en la escritura del trabajo. El CUERPO DEL DOCUMENTO en LaTeX siempre inicia con las siguientes dos instrucciones:
+
+\begin{document}
+\maketitle
+
+% En el CUERPO DEL DOCUMENTO es donde vamos a encontrar:
+
+% - Abstract
+% - Secciones y subsecciones
+% - Tabla de contenido
+% - Tablas
+% - Gráficos
+% - Notas al pie y al márgen
+% - Párrafos especiales (cita)
+% - Bibliografía
+
+%----------------------------------------------------------------»
+% a - Creación del resumen (Abstract)
+%----------------------------------------------------------------»
+
+% El abstract es el resumen del ensayo. Se expone, entre cuatro y siete líneas, la naturaleza del escrito, su tema, el tipo de indagación y los intereses del texto. 
+
+
+%----------------------------------------------------------------»
+% b - Escribir el Epígrafe (Opcional)
+%----------------------------------------------------------------»
+
+% Uno puede escribir o no un epígrafe al principio de un ensayo. Ustedes quizá lo han visto con frecuencia en diferentes tipos de escritos (ensayos, novelas, etc.) - Lo importante es que el epígrafe aluda a algo importante que usted quiere comunicar en el ensayo. 
+
+
+%----------------------------------------------------------------»
+% c - Inicio de las secciones del documento
+%----------------------------------------------------------------»
+
+\section*{¿Qué es un hilo?} % La instrucción  \section con el signo * hace que no quede numerado.
+
+
+% En la «Introducción» se escribe una preparación a la discertación. La idea es atrapar al lector con sus propios intereses. Hacerle caer en cuenta que a él le gustaría leer sobre lo que usted le va a contar, especialmente le gustaría saber las razones por las cuales él debería ser un inventor como usted!!
+
+Un hilo es una unidad básica de utilización de CPU, la cual contiene un id de hilo, su propio programa counter (contador), un conjunto de registros, y una pila; que se representa a nivel del sistema operativo con una estructura llamada TCB (thread control block) \cite{1:Online}.\\
+También se puede decir que un hilo es el encargado de administrar las tareas de un procesador y de sus diferentes núcleos, de tal manera que su desempeño sea el más eficiente. Debido a los hilos, las tareas o procesos de un programa, pueden ser divididas en pequeños trozos, de tal forma que se puedan optimizar y reducir los tiempos de espera de cada instrucción en la cola de un proceso \cite{2:Online}. Si un proceso tiene múltiples hilos, puede realizar más de una tarea a la vez (esto es real cuando se posee más de un CPU).\\
+Normalmente en los procesadores que están compuestos por 6 núcleos y 12 hilos, son capaces de dividir las tareas a realizar en 12 tareas diferentes, en vez de realizar solo 6, de esta forma es como se optimizan los tiempos de ejecución de un proceso.
+
+
+\section*{Historia de los hilos}
+El término de “hilos” apareció por primera vez bajo el término de “tareas” en OS / 360 multiprogramación con un número variable de Tareas (MVT) en el año 1967 \cite{3:Online}.
+% ----------------------
+% La intrucción \underline se usa para subrayar frases. 
+% ----------------------
+
+\section*{Tipos de hilos}
+\begin{enumerate}
+\item \textbf{Hilos del núcleo (Kernel threads):} Son hilos asociados al código del núcleo del sistema operativo, creados y gestionados por el propio núcleo.
+\item \textbf{Hilos de usuario (user threads):} Son parte del código de un determinado proceso de usuario. Estos a su vez se pueden dividir en proceso monohilo (programa que consta de un único hilo de usuario) y proceso multihilo (programa que se descompone en varios hilos de usuario). Es importante resaltar que para la gestión de los hilos de usuario el programador utiliza una librería de hilos, la cual, contiene funciones para la creación, destrucción, planificación y sincronización de los hilos de usuario.
+\item \textbf{Procesos ligeros (lightweight processes):} También denominados procesadores virtuales. Son hilos de usuario cuya gestión es realizada por el núcleo del sistema operativo. Un proceso ligero puede estar asociado a uno o varios hilos de usuario y tiene que tener asociado un hilo de núcleo \cite{4:Online}.
+\end{enumerate}
+
+
+% Aquí se empieza con los argumentos. El título de cada uno de ellos puede modificarse y ser más acorde con el tipo de argumento que va a ofrecer. Recuerde que se trata de RAZONES y no de OPINIONES. 
+
+
+
+% ----------------------
+% Se van a dar cuenta de que el subrayado con \underline no funciona si lo que quieren es subrayar un párrafo completo, esta instrucción se usa sólo en palabras o frases cortas. 
+% ----------------------
+
+% ----------------------
+% La instrucción \footnote{} es para hacer pies de página. Como se ve en el resultado en PDF, generan un numerito consecutivo, a la manera habitual de los pies de página de los artículos o libros de ciencia. 
+% ----------------------
+
+\section*{Hilos a nivel de Hardware}
+En una aplicación KLT (Hilos a nivel de núcleo) pura, todo el trabajo de gestión de hilos lo realiza el kernel. En el área de la aplicación no hay código de gestión de hilos, únicamente un API (interfaz de programas de aplicación) para la gestión de hilos en el núcleo. Windows 2000, Linux y OS/2 utilizan este método. Linux utiliza un método muy particular en que no hace diferencia entre procesos e hilos, para linux si varios procesos creados con la llamada al sistema “clone” comparten el mismo espacio de direcciones virtuales el sistema operativo los trata como hilos y lógicamente son manejados por el kernel \cite{5:Online}.
+\\
+Algunas de las ventajas que esto brinda son las siguientes:
+\begin{enumerate}
+\item El kernel puede planificar simultáneamente múltiples hilos del mismo proceso en múltiples procesadores.
+\item Si se bloquea un hilo, puede planificar otro del mismo proceso.
+\item Las propias funciones del kernel pueden ser multihilo.
+\end{enumerate}
+
+
+\section*{Hilos a nivel de Software}
+En una aplicación ULT (Hilos a nivel de usuario) pura, todo el trabajo de gestión de hilos lo realiza la aplicación y el núcleo o kernel no es consciente de la existencia de hilos. Es posible programar una aplicación como multihilo mediante una biblioteca de hilos. La misma contiene el código para crear y destruir hilos, intercambiar mensajes y datos entre hilos, para planificar la ejecución de hilos y para salvar y restaurar el contexto de los hilos. Cabe resaltar que el lenguaje de programación si importa, debido a que no todos soportan la implementación por hilos. En el caso de los lenguajes de programación interpretados, solo algunos pueden implementarse hilos (por ejemplo, Rubí MRI para Ruby, CPython para Python).\\
+Todas las operaciones descritas se llevan a cabo en el espacio de usuario de un mismo proceso. El kernel continúa planificando el proceso como una unidad y asignándole un único estado (Listo, bloqueado, etc.) \cite{5:Online}.\\
+Algunas de las ventajas que brinda son:
+\begin{enumerate}
+\item El intercambio de los hilos no necesita los privilegios del modo kernel, porque todas las estructuras de datos están en el espacio de direcciones de usuario de un mismo proceso. Por lo tanto, el proceso no debe cambiar a modo kernel para gestionar hilos. Se evita la sobrecarga de cambio de modo y con esto el sobrecoste u overhead.
+\item Se puede realizar una planificación específica. Dependiendo de que aplicación sea, se puede decidir por una u otra planificación según sus ventajas.
+\end{enumerate}
+
+
+\section*{Ejemplo}
+A continuación, se muestra un segmento de código en el lenguaje de programación C++ que mediante el uso de hilos recibe como parámetro de entrada un número, lo incrementa en una unidas y posteriormente lo devuelve mediante el uso de otro hilo, el cual tiene como objetivo esperar el resultado y posteriormente mostrarlo \cite{6:Online}.
+\\
+\\
+
+\begin{lstlisting}
+//Se incluyen cada una de las librerias necesarias
+#include <stdio.h>
+#include <stdlib.h>
+//La Libreria pthread.h es la que permite la creacion y eliminacion de los hilos. 
+#include <pthread.h>
+#include <unistd.h>
+//Esta funcion es la encargada de ejecutar cada uno de los hilos del programa
+//En esta funcion se recibe un numero y se hace el incremento en una unidad.
+void* thread_run(void* data)
+{ sleep(2); 
+  printf("[TH_1:%ld]: Hello from the thread \n", pthread_self());
+  sleep(1);
+  (*(int*)data)++;
+  printf("[TH_1: %ld]: To exit...............\n",pthread_self());
+  pthread_exit(data);}
+//Cuerpo principal del programa
+int main()
+{
+//Se realiza la creacion del hilo mediante pthread_create
+  pthread_t thread;
+  int data=0;
+  int thread_rc;
+  printf("[MAIN:%ld]: Starting............ \n",pthread_self());
+//Se verifica que el hilo no se haya creado con anterioridad
+if ((thread_rc=pthread_create(&thread,NULL,thread_run,&data))!=0)
+  {printf("Error creating the thread. Code %i",thread_rc);
+   return -1;}
+//Retardo de tiempo
+sleep(1);
+  printf("[MAIN:%ld]: Thread allocated \n",pthread_self());
+  int *ptr_output_data;
+//Mediante pthread_join se recoge el puntero que el hilo devuelve.
+  pthread_join(thread,(void **)&ptr_output_data);
+  printf("[MAIN:%ld]: Thread returns %d \n",pthread_self(), *ptr_output_data);
+  return 0;
+}
+
+\end{lstlisting}
+
+
+% Este apartado se construye en dos columnas. Eso es gracias al paquete «multicol» que escribimos en el «preámbulo». Determinamos la cantidad de columnas dentro del segundo corchete del ambiente «multicols», tal y como sigue:
+
+
+
+
+
+
+%----------------------------------------------------------------»
+% c - Bibliografía
+%----------------------------------------------------------------»
+
+% El entorno «thebibliography» nos sirve para construir la bibliografía. Cada \bibtem es una referencia que hemos usado en nuestro documento. 
+
+% Para citar las referencias usamos el comando \cite{etiqueta}, tal y como se hizo en el último párrafo de esta plantilla.  Por supuesto, la «etiqueta» es el nombre que le hemos dado a la referencia. En el caso del primer libro de esta bibliografía vemos que la etiqueta es «ejemplo», las otras son «libro1», «libro2», etc. Usted puede usar cualquier etiqueta siempre y cuando no se repita en otra referencia. Cada referencia tiene etiqueta única.
+\bibliographystyle{babplai3}
+\bibliography{ref}
+
+
+%================================================================»
+% EXPLICACIONES FINALES
+%================================================================»
+%----------------------------------------------------------------»
+% Signos en LaTeX
+%----------------------------------------------------------------»
+
+% Como se ha notado, escribir el signo % (porcentaje) produce «comentarios» dentro del código, explicaciones que no son tomadas en cuenta a la hora de «compilar» el código escrito. Si se quiere incorporar un signo % (porcentaje) como parte del texto que se está escribiendo debe escribirse con la barra de instrucción habitual, así: \% 
+
+% Hay otros signos a los que también es necesario antecederlos de la barra \ - Son los siguientes:
+
+% \		carácter inicial de comando			Se escribiría: \tt\char‘\\
+% { }	abre y cierra bloque de código		Se escribiría: \{, \}
+% $		abre y cierra el modo matemático		Se escribiría: \$
+% &		tabulador (en tablas y matrices)		Se escribiría: \&
+% #		señala parámetro en las macros		Se escribiría: \_ , \^{}
+% _, ^	para subíndices y exponentes			Se escribiría: \#
+% ~		para evitar cortes de renglón			Se escribiría: \~{}
+
+%----------------------------------------------------------------»
+% Cambios en la estética de las palabras
+%----------------------------------------------------------------»
+
+% Este es el listado de las instrucciones básicas:
+
+% - Negrita: 	\textbf{}
+% - Itálica: 	\textit{}
+% - Slanted:		\textsl{}
+% - Sans Serif:	\textsf{}
+% - Versalitas:	\textsc{}
+% - Typewriter: 	\texttt{}
+% - Enfático:	\emph{}
+
+% Lo que se escriba dentro de los corchetes de cada instrucción será lo que se verá modificado en el texto. Ejemplo:
+
+% \sc{Esto es una frase en versalitas}
+
+% Por supuesto, la anterior instrucción no compilará en este documento porque la antece un signo de % (porcentaje), que es el signo de los «comentarios». Pero, pruebe en el texto normal y verá los cambios con cada una de las anteriores instrucciones. 
+
+%--------------------------------»»
+% NOTA IMPORTANTE
+% Si alguien quiere anexar tablas o gráficos al documento, le recomiendo acercarse a la sección que lo explica en los manuales, guías o instructivos que están en BlackBoard. 
+%--------------------------------»»
+
+\end{document}
